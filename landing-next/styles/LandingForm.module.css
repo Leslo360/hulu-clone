@@ -1,0 +1,38 @@
+ .form {
+     flex: 0.65;
+     margin-top: -280px;
+     background: rgba(156, 156, 156, 0.281);
+     backdrop-filter: blur(3px);
+     height: 70vh;
+     padding: 10px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     box-shadow: -3px -2px 9px rgba(255, 255, 255, 0.466), 5px 5px 10px rgba(19, 18, 18, 0.657);
+     border-radius: 5px;
+ }
+
+
+
+ @media (max-width: 900px) {
+     .form {
+
+         margin-top: -20px;
+     }
+
+     .form label {
+         margin-bottom: 0;
+     }
+
+     .captcha {
+         transform: scale(0.8);
+     }
+
+     .formControl {
+         width: 200px;
+         height: 35px;
+         padding: 5px;
+         margin-left: auto;
+         margin-right: auto;
+     }
+ }
