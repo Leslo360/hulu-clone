@@ -8,6 +8,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import React, { useEffect } from "react";
 import styles from "../styles/Features.module.css";
+import Rellax from "rellax";
 
 const Features = () => {
   useEffect(() => {
@@ -15,9 +16,11 @@ const Features = () => {
       duration: 600,
       easing: "ease-in",
     });
+
+    var rellax = new Rellax(".rellax");
   }, []);
   return (
-    <div className={styles.container} id="About">
+    <div className={styles.container } id="About">
       <h1 data-aos="fade">About Us</h1>
       <p data-aos="fade-right">
         Group One Capital Properties leverages its networking and knowledgeable
@@ -74,18 +77,18 @@ const Features = () => {
       <div className={styles.members}>
         <div className={styles.member} data-aos="flip-up" data-aos-delay="100">
           <img src="https://gocf-demo.web.app/static/media/brian.021a339c.jpg" />
-          <h6>Brian N. Zhanda</h6>
-          <h7>Executive Director</h7>
+          <div className={styles.overlay}>
+            <h6>Brian N. Zhanda</h6>
+            <h7>Executive Director</h7>
+          </div>
         </div>
-        <div className={styles.member} data-aos="flip-up" data-aos-delay="400">
-          <img src="https://gocf-demo.web.app/static/media/keith.233216ae.png" />
-          <h6>Keith Shaba</h6>
-          <h7>Regional Acquisitions Officer for Africa</h7>
-        </div>
+
         <div className={styles.member} data-aos="flip-up" data-aos-delay="600">
           <img src="https://gocf-demo.web.app/static/media/fungai.8a5747d0.jpg" />
-          <h6>Fungai T. Chapita</h6>
-          <h7>Head of New Business</h7>
+          <div className={styles.overlay}>
+            <h6>Fungai T. Chapita</h6>
+            <h7>Head of New Business</h7>
+          </div>
         </div>
       </div>
     </div>

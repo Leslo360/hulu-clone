@@ -6,7 +6,7 @@
     flex-direction: column;
     padding: 20px;
     align-items: center;
-
+    
     margin-left: auto;
     margin-right: auto;
 }
@@ -41,11 +41,46 @@
 }
 
 .member img {
+    transition: all 1.5s ease;
+
     width: 250px;
     height: 250px;
     border-radius: 10px;
     box-shadow: -2px -2px 5px rgb(255, 255, 255), 2px 2px 5px rgb(97, 97, 97);
     margin-bottom: 5px;
+    opacity: 1;
+    backface-visibility: hidden;
+}
+
+.overlay {
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    /* background-color: #ffffffc4; */
+    position: absolute;
+    top: 86%;
+    left: 50%;
+    color: white;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+
+    backdrop-filter: blur(5px);
+    border-radius: 0 0 10px 10px;
+}
+
+.overlay h6 {
+    color: white;
+    font-size: 14px;
+}
+
+.member:hover img {
+    opacity: 0.9;
+}
+
+.member:hover .overlay {
+    opacity: 1;
 }
 
 @media (max-width: 900px) {

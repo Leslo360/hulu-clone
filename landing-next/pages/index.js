@@ -1,12 +1,13 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import { Button, Carousel, Container, Jumbotron } from "react-bootstrap";
+import { useEffect, useRef, useState } from "react";
+import { Carousel, Container, Jumbotron } from "react-bootstrap";
+import { Button } from "@material-ui/core";
 import styles from "../styles/Home.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Features from "../components/Features";
-import Members from "../components/Members";
 import LandingForm from "../components/LandingForm";
 import Aos from "aos";
+import Rellax from "rellax";
 
 const slides = [
   {
@@ -41,19 +42,35 @@ const slides = [
 ];
 
 export default function Home() {
+  const rellaxRef = useRef();
+
+  const [showForm, setShowForm] = useState(false);
   useEffect(() => {
     Aos.init({
       duration: 400,
       easing: "ease-in-sine",
     });
+
+    var rellax = new Rellax(".rellax");
   }, []);
+
+  const handleShowForm = () => {
+    setShowForm(true);
+  };
+
   let d = new Date();
   let year = d.getFullYear();
+
   return (
     <div className={styles.container}>
       <Head>
         <title>Group One Capital Property</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+
         <link
           rel="stylesheet"
           href="https://bootswatch.com/4/lux/bootstrap.min.css"
@@ -63,28 +80,27 @@ export default function Home() {
       <Carousel className={styles.carousel}>
         {slides.map((slide) => (
           <Carousel.Item key={slide.id}>
-            <img
-              className="d-block w-100 h-100 c-img"
-              src={slide.img}
-              alt={slide.title}
-            />
+            <img className={styles.c_img} src={slide.img} alt={slide.title} />
             <Carousel.Caption className={styles.caption}>
-              <div>
+              <div className="rellax" data-rellax-speed="8">
                 <div className={styles.caption__body}>
                   <h3 data-aos="slide-left">{slide.title}</h3>
                   <p data-aos="slide-left">{slide.subTitle}</p>
                 </div>
-                <Button variant="outline-secondary" className={styles.hide}>
-                  Learn More
-                </Button>
+                {!showForm && (
+                  <Button variant="outline-secondary" onClick={handleShowForm}>
+                    Get in touch
+                  </Button>
+                )}
               </div>
-              <LandingForm />
+              {showForm && <LandingForm location={slide.title} />}
             </Carousel.Caption>
           </Carousel.Item>
         ))}
       </Carousel>
 
       <Features />
+
       <footer className={styles.footer}>
         Copyright © {year} Group One Capital Property All Right Reserved.
         <script
